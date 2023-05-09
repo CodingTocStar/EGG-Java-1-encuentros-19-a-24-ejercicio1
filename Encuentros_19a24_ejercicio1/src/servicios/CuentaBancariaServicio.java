@@ -44,7 +44,8 @@ public class CuentaBancariaServicio {
     
     public void ingresar(CuentaBancaria cuenta, double monto) {
         cuenta.setSaldoActual(cuenta.getSaldoActual() + monto);
-        System.out.println("Has ingresado " + cuenta.getSaldoActual());
+        System.out.println("Ha ingresado: "+ monto);
+        System.out.println("Su saldo actual es:  " + cuenta.getSaldoActual());
     }
     
     //c) Método retirar(double): recibe una cantidad de dinero a retirar y se le
@@ -54,7 +55,7 @@ public class CuentaBancariaServicio {
     public void retirar (CuentaBancaria cuenta, double monto){
         cuenta.setSaldoActual(cuenta.getSaldoActual() - monto);
         System.out.println("Retiro " + monto);
-        System.out.println("SU saldo actual es: " +cuenta.getSaldoActual());
+        System.out.println("SU saldo actual es: " + cuenta.getSaldoActual());
     }
     
   //d) Método extraccionRapida: le permitirá sacar solo un 20% de su saldo.
@@ -65,11 +66,29 @@ public class CuentaBancariaServicio {
         double saldoActual = cuenta.getSaldoActual();
         //Se verfica que el extracto no supere el  0.2 del saldo
         if (extracto>saldoActual*0.20) {
-            System.out.printf("ERROR, MONTO DE EXTRACCION SUPERIOR A LO PERMITIDO, %f%n" ,saldoActual); 
-            return;
+            System.out.printf("ERROR, MONTO DE EXTRACCION SUPERIOR A LO PERMITIDO, %f%n" + saldoActual);
         }
         double actSaldo = saldoActual - extracto;
+        System.out.println("Ha extraido: " + extracto);
         cuenta.setSaldoActual(actSaldo);
+        
+    }
+    
+    //e) Método consultarSaldo: permitirá consultar el saldo disponible en la
+    //cuenta.
+    
+    public void consultarSaldo (CuentaBancaria cuenta) {
+        double saldoActual = cuenta.getSaldoActual();
+        System.out.println("Su saldo actual es: " + saldoActual);
+    }
+    
+    //f) Método consultarDatos: permitirá mostrar todos los datos de la
+    //cuenta.
+    
+    public void consultarDatos(CuentaBancaria cuenta) {
+        System.out.println("Su numero de cuenta es: " + cuenta.getNumeroCuenta());
+        System.out.println("Su DNI es: " + cuenta.getDniCliente());
+        System.out.println("Su saldo actual es: " + cuenta.getSaldoActual());
     }
 
 }
